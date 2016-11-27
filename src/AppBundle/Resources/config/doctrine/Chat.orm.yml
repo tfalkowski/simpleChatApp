@@ -1,0 +1,34 @@
+AppBundle\Entity\Chat:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ChatRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        userId:
+            type: integer
+            column: user_id
+        message:
+            type: string
+            length: 255
+        status:
+            type: integer
+        createdAt:
+            type: datetime
+            column: created_at
+        approvedAt:
+            type: datetime
+            column: approved_at
+            nullable: true
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: chats
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }
